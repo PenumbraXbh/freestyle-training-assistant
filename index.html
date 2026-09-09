@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f0e4" />
+    <meta
+      name="description"
+      content="Freestyle 训练助手：低阻力记录训练、获得灵感，并看见自己的研究路径。"
+    />
+    <title>Freestyle 训练助手｜产品验证 Demo</title>
+    <link rel="stylesheet" href="styles.css?v=20260827-1" />
+  </head>
+  <body>
+    <aside class="demo-disclosure" aria-label="演示说明">
+      产品验证 Demo：AI 生成、语音转写、登录与云同步均为模拟能力，数据仅保存在当前浏览器。
+    </aside>
+    <div id="app"></div>
+    <div id="startup-error" class="startup-error" hidden>
+      <div>
+        <strong>页面启动失败</strong>
+        <p>请刷新页面；如果仍然出现此提示，请使用较新版本的 Chrome、Edge、Safari 或 Firefox。</p>
+        <pre id="startup-error-detail"></pre>
+      </div>
+    </div>
+    <noscript><div class="startup-error"><div><strong>需要启用 JavaScript</strong><p>此网页依赖 JavaScript 才能运行。</p></div></div></noscript>
+    <div id="toast-region" class="toast-region" aria-live="polite"></div>
+    <script>
+      (function () {
+        function showStartupError(message) {
+          var panel = document.getElementById("startup-error");
+          var detail = document.getElementById("startup-error-detail");
+          if (panel) panel.hidden = false;
+          if (detail) detail.textContent = message || "未知脚本错误";
+        }
+        window.addEventListener("error", function (event) { showStartupError(event.message); });
+        window.addEventListener("unhandledrejection", function (event) { showStartupError(String(event.reason || "Promise 执行失败")); });
+        window.__showFreestyleStartupError = showStartupError;
+      })();
+    </script>
+    <script defer src="app.js?v=20260827-1"></script>
+  </body>
+</html>
+
